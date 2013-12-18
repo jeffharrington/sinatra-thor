@@ -2,7 +2,7 @@
 
 Thor script to generate a skeleton Sinatra application
 
-## Description
+## Background
 
 I love Sinatra and the minimalist philosophy it embodies. 
 
@@ -10,17 +10,22 @@ However, I felt that frameworks like Monk or Padrino take away from that minimal
 
 So I created a (minimal) script using Thor to generate a skeleton Sinatra application to my liking. 
 
+## Description
+
+This Thor script will generate a minimalist Sinatra application. 
+
 The application that is generated includes the following Gems:
 
 * sinatra
 * sinatra-contrib
+* unicorn
 
 And sets up the following front-end frameworks 
 
 * jQuery
 * Bootstrap
 
-The script will automatically install gems via Bundler and initialize a Git repository. 
+Finally, the script will automatically install gems via Bundler and initialize a Git repository. 
 
 ## Requirements
 
