@@ -2,7 +2,7 @@
 
 Thor script to generate a skeleton Sinatra application
 
-### Background
+## Background
 
 I love [Sinatra](http://www.sinatrarb.com) and the minimalist philosophy it embodies. 
 
@@ -10,7 +10,7 @@ However, I felt that frameworks like [Monk](https://github.com/monkrb/monk) or [
 
 So I created a (minimal) script using [Thor](http://whatisthor.com/) to generate a skeleton Sinatra application to my liking. 
 
-### Description
+## Description
 
 This Thor script will generate a minimalist Sinatra application. 
 
@@ -27,32 +27,32 @@ And sets up the following front-end frameworks
 
 Finally, the script will automatically install gems via Bundler and initialize a Git repository. 
 
-### Requirements
+## Requirements
 
 * [Ruby](https://www.ruby-lang.org/en/)
 * [Git](http://git-scm.com/)
 * [Thor](http://whatisthor.com/)
 * [Bundler](http://bundler.io/)
 
-### Install
+## Install
 
 Clone the repository to your local machine:
 
-`git clone https://github.com/jeffharrington/sinatra-thor.git`
+    git clone https://github.com/jeffharrington/sinatra-thor.git
 
 Change to the directory of the project and run:
 
-`thor install sinatra.thor`
+    thor install sinatra.thor
 
 After going through the installation process, you will now see the task installed when you run:
 
-`thor installed`
+    thor installed
 
-### Usage
+## Usage
 
 Execute the script using Thor as follows:
 
-`thor sinatra:generate YOUR_APPLICATION_NAME`
+    thor sinatra:generate YOUR_APPLICATION_NAME
 
 This will generate a new Sinatra application with the following folder structure:
 
