@@ -8,31 +8,31 @@ class Sinatra < Thor
     say "\nGenerating new Sinatra application called #{name}\n", :cyan
     create_directory name
     inside(name) do
-      create_file "app.rb",         APP_RB
-      create_file "config.ru",      CONFIG_RU
-      create_file "environment.rb", ENVIRONMENT_RB
-      create_file "Gemfile",        GEMFILE
-      create_file "Procfile",       PROCFILE
-      create_file ".gitignore",     GITIGNORE
+      create_file "app.rb",         content_for_app_rb
+      create_file "config.ru",      content_for_config_ru
+      create_file "environment.rb", content_for_environment_rb
+      create_file "Gemfile",        content_for_gemfile
+      create_file "Procfile",       content_for_procfile
+      create_file ".gitignore",     content_for_gitignore
       
       inside('config') do
-        create_file "unicorn.rb", UNICORN_RB
+        create_file "unicorn.rb", content_for_unicorn_rb
       end
       
       inside('public/css') do
-        create_file "application.css", APPLICATION_CSS
+        create_file "application.css", content_for_application_css
       end
 
       inside('public/js') do
-        create_file "application.js", APPLICATION_JS
+        create_file "application.js", content_for_application_js
       end
       
       inside ('views') do
-        create_file "index.erb", INDEX_ERB
+        create_file "index.erb", content_or_index_erb
       end
 
       inside('views/layouts') do
-        create_file "application.erb", APPLICATION_ERB
+        create_file "application.erb", content_for_application_erb
       end      
       
       run "bundle install", capture: true # Hide output
@@ -54,27 +54,31 @@ class Sinatra < Thor
 #----------------------------------------------------------------------------
 # File contents
 #----------------------------------------------------------------------------
-INDEX_ERB = "<h1>Hello, World!</h1>"
+def content_or_index_erb
+<<-INDEX_ERB
+<h1>Hello, World!</h1>
+<span class='glyphicon glyphicon-globe'></span>
+INDEX_ERB
+end
 
-APPLICATION_CSS = "h1 { text-align: center; }"
-
-APPLICATION_JS = "console.log('JavaScript Enabled');"
-
-PROCFILE = "web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb"
-
-APP_RB = <<-CONTENT
+def content_for_app_rb
+<<-APP_RB
 # Index
 get '/' do
   erb :index
 end
-CONTENT
+APP_RB
+end
 
-CONFIG_RU = <<-CONTENT
+def content_for_config_ru
+<<-CONFIG_RU
 require './environment'
 run Sinatra::Application
-CONTENT
+CONFIG_RU
+end
 
-ENVIRONMENT_RB = <<-CONTENT
+def content_for_environment_rb
+<<-ENVIRONMENT_RB
 require 'sinatra'
 require 'sinatra/reloader'
 require 'rubygems' 
@@ -89,9 +93,11 @@ set :erb, :layout => :'layouts/application'
 
 # Load the application
 require_relative './app'
-CONTENT
+ENVIRONMENT_RB
+end
 
-GEMFILE = <<-CONTENT
+def content_for_gemfile
+<<-GEMFILE
 source 'https://rubygems.org'
 
 ruby '2.0.0'
@@ -102,22 +108,45 @@ gem 'sinatra-contrib'
 
 # Webserver
 gem 'unicorn'
-CONTENT
+GEMFILE
+end
 
-GITIGNORE = <<-CONTENT
+def content_for_procfile
+"web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb"
+end
+
+def content_for_gitignore
+<<-GITIGNORE
 /.bundle
 /log
 /tmp
 .DS_Store
-CONTENT
+GITIGNORE
+end
 
-UNICORN_RB = <<-CONTENT
+def content_for_unicorn_rb
+<<-UNICORN_RB
 worker_processes 3
 timeout 30
 preload_app true    
-CONTENT
+UNICORN_RB
+end
 
-APPLICATION_ERB = <<-CONTENT
+def content_for_application_css
+<<-APPLICATION_CSS
+.container { text-align: center; }
+.glyphicon-globe { color: green; font-size: 3em;}
+APPLICATION_CSS
+end
+
+def content_for_application_js
+<<-APPLICATION_JS
+console.log('JavaScript Enabled');
+APPLICATION_JS
+end
+
+def content_for_application_erb
+<<-APPLICATION_ERB
 <!DOCTYPE html>
 <html>
   <head>
@@ -136,6 +165,7 @@ APPLICATION_ERB = <<-CONTENT
     </div>
   </body>
 </html>
-CONTENT
+APPLICATION_ERB
+end
 
 end
