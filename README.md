@@ -75,5 +75,11 @@ This will generate a new Sinatra application with the following folder structure
 * Procfile
 
 
+##License
+
+The MIT License (MIT)
+
+Copyright (c) 2013 Jeffrey Harrington, jeff.harrington@gmail.om
+
 
 
