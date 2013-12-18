@@ -56,10 +56,23 @@ Execute the script using Thor as follows:
 
 This will generate a new Sinatra application with the following folder structure:
 
-* /YOUR_APPLICATION_NAME
-  * config
-  * public
-  * views
+* config/
+  * unicorn.rb
+* public/
+  * css/
+    * application.css
+  * js/
+    * application.js
+* views/
+  * layouts/
+    * application.erb
+  * index.erb
+* .gitignore
+* app.rb
+* config.ru
+* environment.rb
+* Gemfile
+* Procfile
 
 
 
