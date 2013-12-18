@@ -8,7 +8,7 @@ I love [Sinatra](http://www.sinatrarb.com) and the minimalist philosophy it embo
 
 However, I felt that frameworks like [Monk](https://github.com/monkrb/monk) or [Padrino](http://www.padrinorb.com/) take away from that minimalist feel. 
 
-So I created a (minimal) script using [Thor](http://whatisthor.com/) to generate a skeleton Sinatra application to my liking. 
+So I created a script using [Thor](http://whatisthor.com/) that generates a very minimal Sinatra application. 
 
 ## Description
 
